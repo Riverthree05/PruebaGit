@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+:root {
+    --neon-blue: #00ffff;
+    --neon-pink: #ff00ff;
+    --arcade-black: #111;
+    --arcade-gray: #333;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Press Start 2P', cursive;
+    background-color: var(--arcade-black);
+    color: #fff;
+    line-height: 1.6;
+}
+
+.arcade-cabinet {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--arcade-gray);
+    border: 10px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5), 0 0 40px rgba(255, 0, 255, 0.5);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.neon-text {
+    font-size: 3em;
+    color: var(--neon-blue);
+    text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue), 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+    animation: neon-flicker 1.5s infinite alternate;
+}
+
+@keyframes neon-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue), 0 0 20px var(--neon-pink), 0 0 40px var(--neon-pink);
+    }
+    20%, 24%, 55% {
+        text-shadow: none;
+    }
+}
+
+.game-screen {
+    background-color: #000;
+    border: 5px solid #444;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.games-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.game {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--neon-blue);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.game:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px var(--neon-blue);
+}
+
+.game iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.pixel-text {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: var(--neon-pink);
+}
+
+.arcade-btn {
+    background-color: var(--neon-blue);
+    color: var(--arcade-black);
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.arcade-btn:hover {
+    background-color: var(--neon-pink);
+    transform: scale(1.05);
+}
+
+.game-description {
+    font-size: 0.8em;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.joystick {
+    width: 60px;
+    height: 60px;
+    background-color: var(--neon-blue);
+    border-radius: 50%;
+    position: relative;
+}
+
+.joystick::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--arcade-black);
+    border-radius: 50%;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--neon-pink);
+    border-radius: 50%;
+}
+
+.credits {
+    font-size: 0.8em;
+    color: var(--neon-blue);
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 1200px) {
+    .arcade-cabinet {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .games-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .neon-text {
+        font-size: 2em;
+    }
+
+    .control-panel {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .games-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .game {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .arcade-cabinet {
+        padding: 10px;
+        border-width: 5px;
+    }
+
+    .game-screen {
+        padding: 10px;
+    }
+
+    .pixel-text {
+        font-size: 1em;
+    }
+
+    .arcade-btn {
+        padding: 8px 16px;
+        font-size: 0.7em;
+    }
+
+    .game-description {
+        font-size: 0.7em;
+    }
+
+    .joystick {
+        width: 40px;
+        height: 40px;
+    }
+
+    .joystick::after {
+        width: 20px;
+        height: 20px;
+    }
+
+    .btn {
+        width: 30px;
+        height: 30px;
+    }
+}
